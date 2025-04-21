@@ -8,7 +8,7 @@ import java.util.*;
  * @author <a href="mailto:szhnet@gmail.com">szh</a>
  */
 public class ReItrLinkedList<E> extends AbstractSequentialList<E>
-        implements List<E>, Deque<E>, Cloneable, java.io.Serializable {
+        implements Deque<E>, Cloneable, java.io.Serializable {
 
     transient int size = 0;
 
@@ -221,6 +221,13 @@ public class ReItrLinkedList<E> extends AbstractSequentialList<E>
             throw new NoSuchElementException();
         }
         return unlinkLast(l);
+    }
+
+    @Override
+    public ReItrLinkedList<E> reversed() {
+        ReItrLinkedList<E> result = new ReItrLinkedList<E>(this);
+        Collections.reverse(result);
+        return result;
     }
 
     /**
